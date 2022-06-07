@@ -1,0 +1,22 @@
+name: "amber-website"
+title: "Amber Gayle Thalmayer"
+description: |
+  Test website for amber
+output_dir: "docs"
+creative_commons: CC BY-SA
+navbar:
+  right:
+    - text: "Blog"
+      href: blog.html
+    - text: "Research Projects"
+      href: projects.html
+    - text: "QB6 Measures"
+      href: measures.html
+    - text: "Team"
+      href: team.html
+    - icon: fab fa-github
+      href: https://github.com/gayoungson/gayoungson.github.io
+output: 
+  distill::distill_article:
+    toc: true
+    css: styles.css

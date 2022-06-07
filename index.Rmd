@@ -1,0 +1,54 @@
+---
+title: "Amber Gayle Thalmayer"
+image: "images/amber.jpg"
+description: |
+  Research in Personality, Mental Health and Culture
+links:
+  - label: Research Gate
+    url: "https://www.researchgate.net/profile/Amber_Thalmayer"
+  - label: ORCID
+    url: "https://orcid.org/0000-0002-1963-1123"
+  - label: Google Scholar
+    url: "https://scholar.google.ch/citations?user=fji_8owAAAAJ&hl=en/"
+  - label: Email
+    url: "mailto:amber-gayle.thalmayer@psychologie.uzh.ch"
+output:
+  postcards::trestles
+site: distill::distill_website
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r packages, include = FALSE}
+# This following packages are needed to build this website:
+# install.packages(c("distill", "rmarkdown", "postcards"))
+library(distill)
+library(rmarkdown)
+library(postcards)
+```
+&nbsp;
+&nbsp;  
+&nbsp;
+
+# Welcome!
+&nbsp;  
+
+My research focus is on personality and mental health: how to measure these constructs with maximum validity and efficiency, and how they vary across cultures. As I help demonstrate in a recent article at American Psychologist, research in psychology has relied predominantly on data from North America and Northern Europe. What aspects of our models are universal and which are more culture-specific? To this end I am the principal investigator on a Swiss National Science Foundation project on personality and mental health in Namibia. The first paper from this study, a large, mixed-methods lexical study of personality in Khoekhoegowab (the most widely spoken of extant Khoesan clicking languages of southern Africa) will appear in the Journal of Personality and Social Psychology. This is the largest lexical study yet conducted in Africa, the first lexical study anywhere to use qualititave follow-up interviews to ground the empircal resutls in common usage, and one of very few to use a community basd sample rather than university students. I also recently published an exploration of the structure of personality in languages from West and East Africa in the Journal of Personality and Social Psychology.
+
+I am also passionate about effective and efficient measurement. For example, I have compared the predictive validity of popular Big Five and Big Six personality inventories in terms of real life outcomes. Since cited over 180 times, our key finding that well-validated short measures had the same predictive validity as much longer versions has helped other researchers best consider their choice of inventory. I am currently developing the Cascades Mental Health Assessment in partnership with Cascades Centers, Inc., of Portland, Oregon. This measure uses concrete response options based on frequency of symptoms in order to reduce reference group effects and improve cross-group comparability.
+
+At the University of Oregon (Ph.D. 2013) I sought to explore the role of individual differences in therapy fit and efficacy by testing personality traits as predictors of clinical presentation and therapy usage and outcome at a couples and family therapy clinic. I also carried out several projects seeking common-denominators of personality structure and measurement across cultures and on the influence of ethically-relevant values and personality traits on each other over time in a longitudinal study. As a postdoctoral project manager for a National Institute of Drug Abuse funded study at the University of Los Angeles Medical School (2013-2016), I helped assess the impact of a change in U.S. law on access to mental health services.
+
+Incoming editorial board member 2020, European Journal of Personality
+Incoming co-chair (2021), International Committee, Society for Personality and Social Psychology (SPSP)
+Elected member of executive board (2019-2021) World Association of Personality Psychology
+
+&nbsp;
+&nbsp;
+
+### Acknowledgments {.appendix}
+
+This website was made by [Gayoung Son](mailto:g.son@unibas.ch) with the [distill package](https://rstudio.github.io/distill/) and a custom theme by Alison Hill & [Desirée De Leon](https://desiree.rbind.io/).
