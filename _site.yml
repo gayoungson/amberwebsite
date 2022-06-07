@@ -15,7 +15,7 @@ navbar:
     - text: "Team"
       href: team.html
     - icon: fab fa-github
-      href: https://github.com/gayoungson/gayoungson.github.io
+      href: https://github.com/gayoungson/amberwebsite
 output: 
   distill::distill_article:
     toc: true
