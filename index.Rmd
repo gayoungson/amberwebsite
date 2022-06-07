@@ -45,10 +45,3 @@ At the University of Oregon (Ph.D. 2013) I sought to explore the role of individ
 Incoming editorial board member 2020, European Journal of Personality
 Incoming co-chair (2021), International Committee, Society for Personality and Social Psychology (SPSP)
 Elected member of executive board (2019-2021) World Association of Personality Psychology
-
-&nbsp;
-&nbsp;
-
-### Acknowledgments {.appendix}
-
-This website was made by [Gayoung Son](mailto:g.son@unibas.ch) with the [distill package](https://rstudio.github.io/distill/) and a custom theme by Alison Hill & [Desirée De Leon](https://desiree.rbind.io/).
