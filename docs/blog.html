@@ -2306,6 +2306,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="https://github.com/gayoungson/amberwebsite">
 <i class="fab fa-github" aria-hidden="true"></i>
 </a>
+<a href="blog.xml">
+<i class="fa fa-rss" aria-hidden="true"></i>
+</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2446,9 +2449,53 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Blog">Blog</h1>
+<a href="posts/2022-09-07-welcome/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 7, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Unknown</div>
+</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Welcome</h2>
+<div class="dt-tags"></div>
+<p>A short description of the post.</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div><div class="sidebar-section custom">
+  <h3>About</h3>
+  This blog explores news and diverse ramblings from Amber. 
+</div>
+
+<div class="sidebar-section custom">
+  <h3>Search</h3>
+  <form action="https://google.com/">
+    <input type="text" name="q">
+    <input type="hidden" name="sites" 
+      value="https://github.com/gayoungson/amberwebsite/blog.html"> <!-- Replace with your blog URL -->
+    <!--<button type="submit">Search</button>-->
+  </form>
+</div></div>
+<div class="sidebar-section subscribe">
+<h3>Subscribe</h3>
+<form method='post' action='https://blogtrottr.com'>
+  <p>Enjoy this blog? Get notified of new posts via email:</p>
+  <input type='text' name='btr_email' />
+  <input type='hidden' name='btr_url'
+         value='https://beta.rstudioconnect.com/content/11424/index.xml'/>
+  <input type='hidden' name='schedule_type' value='0' />
+  <input type='submit' value='Subscribe' />
+</form>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>

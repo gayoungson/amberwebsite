@@ -8,5 +8,13 @@
 </description>
     <generator>Distill</generator>
     <lastBuildDate>Wed, 07 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Welcome</title>
+      <dc:creator>Unknown</dc:creator>
+      <link>https://github.com/gayoungson/amberwebsite/blog.html/posts/2022-09-07-welcome</link>
+      <description>A short description of the post.</description>
+      <guid>https://github.com/gayoungson/amberwebsite/blog.html/posts/2022-09-07-welcome</guid>
+      <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
+    </item>
   </channel>
 </rss>

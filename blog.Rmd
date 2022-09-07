@@ -4,10 +4,11 @@ listing: posts
 ---
 
 ```{r setup, include=FALSE}
-library(rmarkdown)
+library(distill)
 knitr::opts_chunk$set(echo = F, warning = FALSE, message = FALSE)
 
 ```
+
 
 ### Acknowledgments {.appendix}
 
