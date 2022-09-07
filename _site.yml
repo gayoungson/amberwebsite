@@ -2,7 +2,6 @@ name: "amber-website"
 title: "Amber Gayle Thalmayer"
 description: |
   Test website for Amber
-base_url: https://gayoungson.github.io/amberwebsite
 output_dir: "docs"
 creative_commons: CC BY-SA
 navbar:
@@ -24,7 +23,5 @@ output:
     css: styles.css
 collections:
   posts:
-    disqus: amber-website
-    share: [twitter, linkedin]
     custom: _custom.html
     citations: false

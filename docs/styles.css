@@ -15,15 +15,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Libre Baskerville";
   letter-spacing: 2px;
-  line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
+  line-height: 3rem; /* increases, so wrapping headers don't overlap */ 
   color: #096B72;
   font-weight: 300;
-  padding-top: 50px;
+
 }
 
 d-title {
   padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
-  margin-top: 50px;
 }
 
 d-title h1,
@@ -208,4 +207,8 @@ d-article ul > li { /*to add back in space between bullet items that I took away
 
 .posts-list .post-preview p {
   font-family: "Work Sans";
+}
+
+.posts-list .posts-list-caption {
+    margin-top: 50px;
 }
