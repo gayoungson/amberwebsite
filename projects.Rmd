@@ -14,6 +14,21 @@ knitr::opts_chunk$set(echo = F, warning = FALSE, message = FALSE)
 
 ```
 
+### Personality and Mental Health in Africa
+
+  * [Personality and Mental Health among Khoekhoegowab and Oshiwambo speakers in Namibia](https://www.unil.ch/cepco/namibia)
+  * [Lexical studies in Maasai and Supyire-Senufo](https://serval.unil.ch/en/notice/serval:BIB_358626065286)
+ 
+### Cascades Mental Health Assessment
+
+  * [About the CMHA](material/CMHA_about.pdf)
+  * [Request to Use](https://docs.google.com/forms/d/e/1FAIpQLSdVFYJKARgGdAc_ADSSn1egOHpTmB9mGC9QBCjfwy-IlOcVig/viewform?usp=sf_link)
+
+### Other Projects
+
+  * Ethically relevant values, [stability over 4 years](https://onlinelibrary.wiley.com/doi/full/10.1111/jopy.12462), and [influences from and by personality traits](https://serval.unil.ch/en/notice/serval:BIB_85A3082E3917)
+
+
 ### Acknowledgments {.appendix}
 
 This website was made by [Gayoung Son](mailto:g.son@unibas.ch) with the [distill package](https://rstudio.github.io/distill/) and a custom theme by Alison Hill & [Desirée De Leon](https://desiree.rbind.io/).

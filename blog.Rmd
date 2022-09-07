@@ -1,15 +1,10 @@
 ---
 title: "Blog"
+listing: posts
 ---
 
 ```{r setup, include=FALSE}
 library(rmarkdown)
-
-
-# the package "xaringanExtra" is needed to set up panels. Download here: devtools::install_github("gadenbuie/xaringanExtra")
-library(xaringanExtra)
-
-xaringanExtra::use_panelset()
 knitr::opts_chunk$set(echo = F, warning = FALSE, message = FALSE)
 
 ```

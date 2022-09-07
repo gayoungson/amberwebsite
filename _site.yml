@@ -1,7 +1,8 @@
 name: "amber-website"
 title: "Amber Gayle Thalmayer"
 description: |
-  Test website for amber
+  Test website for Amber
+base_url: https://github.com/gayoungson/amberwebsite/blog.html
 output_dir: "docs"
 creative_commons: CC BY-SA
 navbar:
