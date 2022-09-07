@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 Originally posted October 19, 2020 to Psychology Today
+
 People the world over have many similarities:  We all use metaphors, jokes, and insults, we have marriages and kinship rules, and group affiliations. Anthropologist Donald Brown compiled an intriguing list of hundreds of universal aspects of human societies. But we also know that psychological differences across cultures emerge early. Cultural upbringing determines things as basic as where your eyes will move when you look at a painting, and whether you fall prey to certain optical illusions. And even if all societies have marriages, how marriage partners are chosen and what we expect from the experience vary dramatically.
 
 The vast majority of psychological research, however, is conducted on a small subgroup, the 11 percent of us who live in Western, industrialized countries. A recent report by my colleagues and I shows that over 90 percent of recent articles in six top psychology journals drew on such samples (over 60 percent of American). We know a lot about this narrow slice of the human family, but we are neglecting to learn about everyone else.
