@@ -6,13 +6,14 @@ base_url: https://github.com/gayoungson/amberwebsite/blog.html
 collections:
   posts:
     disques: Amber Website
-    share: [twiter, linkedin]
+    share: [twitter, linkedin]
     citations: false
     subscribe: _subscribe.html
     custom: _custom.html
 output_dir: "docs"
 creative_commons: CC BY-SA
 navbar:
+  search: false
   right:
     - text: "Blog"
       href: blog.html
