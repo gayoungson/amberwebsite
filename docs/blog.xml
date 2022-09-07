@@ -2,18 +2,18 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>Amber Gayle Thalmayer</title>
-    <link>https://github.com/gayoungson/amberwebsite/blog.html</link>
-    <atom:link href="https://github.com/gayoungson/amberwebsite/blog.html/blog.xml" rel="self" type="application/rss+xml"/>
+    <link>https://gayoungson.github.io/amberwebsite</link>
+    <atom:link href="https://gayoungson.github.io/amberwebsite/blog.xml" rel="self" type="application/rss+xml"/>
     <description>Test website for Amber
 </description>
     <generator>Distill</generator>
     <lastBuildDate>Mon, 19 Oct 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>What We Could Gain From a More Global Psychology</title>
-      <dc:creator>Amber</dc:creator>
-      <link>https://github.com/gayoungson/amberwebsite/blog.html/posts/2022-09-07-welcome</link>
+      <dc:creator>Amber Gayle Thalmayer</dc:creator>
+      <link>https://gayoungson.github.io/amberwebsite/posts/2020-10-19-global-psychology</link>
       <description>Scientific, moral, and professional reasons to increase inclusion in research</description>
-      <guid>https://github.com/gayoungson/amberwebsite/blog.html/posts/2022-09-07-welcome</guid>
+      <guid>https://gayoungson.github.io/amberwebsite/posts/2020-10-19-global-psychology</guid>
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
     </item>
   </channel>

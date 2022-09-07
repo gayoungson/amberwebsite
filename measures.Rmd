@@ -14,9 +14,7 @@ knitr::opts_chunk$set(echo = F, warning = FALSE, message = FALSE)
 
 ```
 
-### Acknowledgments {.appendix}
 
-This website was made by [Gayoung Son](mailto:g.son@unibas.ch) with the [distill package](https://rstudio.github.io/distill/) and a custom theme by Alison Hill & [Desirée De Leon](https://desiree.rbind.io/).
 
 # QUESTIONNAIRE BIG SIX (QB6) MEASURES
 Big Six inventories of varying length were tested for comparative validity along with the BFI, the NEO-FFI, the HEXACO, and the IPIP measures in Thalmayer, Saucier, and Eigenhuis (2011; Psychological Assessment). The cross-cultural 30-QB6 includes the items that functioned the most consistently across 26 cultural settings (Thalmayer & Saucier, 2014).
@@ -28,3 +26,8 @@ Scoring instructions and psychometric information, suitable for hand-scoring
 ## 48QB6
 Items in a recommended format for administration
 Scoring instructions and psychometric information, suitable for hand-scoring
+
+
+### Acknowledgments {.appendix}
+
+This website was made by [Gayoung Son](mailto:g.son@unibas.ch) with the [distill package](https://rstudio.github.io/distill/) and a custom theme by Alison Hill & [Desirée De Leon](https://desiree.rbind.io/).

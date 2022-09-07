@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://github.com/gayoungson/amberwebsite/blog.html/blog.xml" />
+  <link rel="alternate" type="application/rss+xml" href="https://gayoungson.github.io/amberwebsite/blog.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -528,6 +528,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1600,15 +1601,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1807,7 +1814,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1837,12 +1844,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     letter-spacing: 2px;
     line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
     color: #096B72;
-    font-weight: 200;
-    margin-top: 50px;
+    font-weight: 300;
+    padding-top: 50px;
   }
 
   d-title {
     padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
+    margin-top: 50px;
   }
 
   d-title h1,
@@ -1852,7 +1860,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   d-article div.sourceCode code, 
   d-article pre code {
-  	font-family: "DM Mono", monospace;
+  	font-family: "Work Sans", monospace;
   	font-size: 1rem;
   }
 
@@ -1953,6 +1961,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     border-top: none !important;
   }
 
+  d-appendix h3 {
+      padding-top: 0px; /*Remove padding-top from blog posts*/
+  }
+
   /* -------------Footer------------------*/
 
   .distill-site-footer {
@@ -2014,9 +2026,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     content: " ";  /* Remove toc bullets */
   }
 
+  /*----- BLOG PAGE----*/
 
+  .posts-list .post-preview h2 {
+    font-family: "Libre Baskerville";
+    padding-top: 0px;
+  }
 
-
+  .posts-list .post-preview p {
+    font-family: "Work Sans";
+  }
   </style>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2046,9 +2065,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="team.html">Team</a>
 <a href="https://github.com/gayoungson/amberwebsite">
 <i class="fab fa-github" aria-hidden="true"></i>
-</a>
-<a href="blog.xml">
-<i class="fa fa-rss" aria-hidden="true"></i>
 </a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
@@ -2193,12 +2209,12 @@ function init_posts_list() {
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Blog">Blog</h1>
-<a href="posts/2022-09-07-welcome/" class="post-preview">
+<a href="posts/2020-10-19-global-psychology/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":[]}</script>
 <div class="metadata">
 <div class="publishedDate">Oct. 19, 2020</div>
 <div class="dt-authors">
-<div class="dt-author">Amber</div>
+<div class="dt-author">Amber Gayle Thalmayer</div>
 </div>
 </div>
 <div class="thumbnail">
@@ -2214,29 +2230,18 @@ function init_posts_list() {
 <div class="posts-sidebar">
 <div><div class="sidebar-section custom">
   <h3>About</h3>
-  This blog explores news and diverse ramblings from Amber. 
+  Some news and some ramblings on who we are, what we do and why we exist...
 </div>
 
 <div class="sidebar-section custom">
   <h3>Search</h3>
   <form action="https://google.com/">
-    <input type="text" name="q">
+    <input type="text" name="q" placeholder="Search...">
     <input type="hidden" name="sites" 
-      value="https://github.com/gayoungson/amberwebsite/blog.html"> <!-- Replace with your blog URL -->
+      value="https://gayoungson.github.io/amberwebsite"> <!-- Replace with your blog URL -->
     <!--<button type="submit">Search</button>-->
   </form>
 </div></div>
-<div class="sidebar-section subscribe">
-<h3>Subscribe</h3>
-<form method='post' action='https://blogtrottr.com'>
-  <p>Enjoy this blog? Get notified of new posts via email:</p>
-  <input type='text' name='btr_email' />
-  <input type='hidden' name='btr_url'
-         value='https://github.com/gayoungson/amberwebsite/blog.xml'/>
-  <input type='hidden' name='schedule_type' value='0' />
-  <input type='submit' value='Subscribe' />
-</form>
-</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>
@@ -2253,8 +2258,17 @@ function init_posts_list() {
 
 
 <div class="d-article">
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--How to make a blog post
+
+library(distill)
+create_post("New Post Title")
+
+New posts are saved in the folder '_posts' in their own folder starting with the date created. Open the post ending with .Rmd, in this case new-post-title.Rmd.
+
+After editing, make sure to *knit* your new post before rendering the site, otherwise it will not show up.
+
+-->
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

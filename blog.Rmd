@@ -9,3 +9,13 @@ knitr::opts_chunk$set(echo = F, warning = FALSE, message = FALSE)
 
 ```
 
+<!--How to make a blog post
+
+library(distill)
+create_post("New Post Title")
+
+New posts are saved in the folder '_posts' in their own folder starting with the date created. Open the post ending with .Rmd, in this case new-post-title.Rmd.
+
+After editing, make sure to *knit* your new post before rendering the site, otherwise it will not show up.
+
+-->

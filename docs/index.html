@@ -384,12 +384,13 @@
             letter-spacing: 2px;
             line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
             color: #096B72;
-            font-weight: 200;
-            margin-top: 50px;
+            font-weight: 300;
+            padding-top: 50px;
           }
 
           d-title {
             padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
+            margin-top: 50px;
           }
 
           d-title h1,
@@ -399,7 +400,7 @@
 
           d-article div.sourceCode code, 
           d-article pre code {
-          	font-family: "DM Mono", monospace;
+          	font-family: "Work Sans", monospace;
           	font-size: 1rem;
           }
 
@@ -500,6 +501,10 @@
             border-top: none !important;
           }
 
+          d-appendix h3 {
+              padding-top: 0px; /*Remove padding-top from blog posts*/
+          }
+
           /* -------------Footer------------------*/
 
           .distill-site-footer {
@@ -561,9 +566,16 @@
             content: " ";  /* Remove toc bullets */
           }
 
+          /*----- BLOG PAGE----*/
 
+          .posts-list .post-preview h2 {
+            font-family: "Libre Baskerville";
+            padding-top: 0px;
+          }
 
-
+          .posts-list .post-preview p {
+            font-family: "Work Sans";
+          }
           </style>
           <!--/radix_placeholder_site_in_header-->
           
@@ -572,7 +584,7 @@
             padding-top: 60px;
           }
           </style>
-          <script src="C:\Users\HOME\Documents\R\win-library\4.0\rmarkdown\rmd\h\pandoc\header-attrs.js"></script>
+          <script src="C:\Users\HOME\AppData\Local\R\win-library\4.2\rmarkdown\rmd\h\pandoc\header-attrs.js"></script>
     
     
   </head>
@@ -591,9 +603,6 @@
           <a href="team.html">Team</a>
           <a href="https://github.com/gayoungson/amberwebsite">
           <i class="fab fa-github" aria-hidden="true"></i>
-          </a>
-          <a href="blog.xml">
-          <i class="fa fa-rss" aria-hidden="true"></i>
           </a>
           <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
           </div>

@@ -17,12 +17,13 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2px;
   line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
   color: #096B72;
-  font-weight: 200;
-  margin-top: 50px;
+  font-weight: 300;
+  padding-top: 50px;
 }
 
 d-title {
   padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
+  margin-top: 50px;
 }
 
 d-title h1,
@@ -32,7 +33,7 @@ d-article h2 {
 
 d-article div.sourceCode code, 
 d-article pre code {
-	font-family: "DM Mono", monospace;
+	font-family: "Work Sans", monospace;
 	font-size: 1rem;
 }
 
@@ -133,6 +134,10 @@ d-appendix {
   border-top: none !important;
 }
 
+d-appendix h3 {
+    padding-top: 0px; /*Remove padding-top from blog posts*/
+}
+
 /* -------------Footer------------------*/
 
 .distill-site-footer {
@@ -194,5 +199,13 @@ d-article ul > li { /*to add back in space between bullet items that I took away
   content: " ";  /* Remove toc bullets */
 }
 
+/*----- BLOG PAGE----*/
 
+.posts-list .post-preview h2 {
+  font-family: "Libre Baskerville";
+  padding-top: 0px;
+}
 
+.posts-list .post-preview p {
+  font-family: "Work Sans";
+}

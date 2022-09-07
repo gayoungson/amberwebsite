@@ -460,6 +460,7 @@
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1532,15 +1533,21 @@
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1739,7 +1746,7 @@
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <!--radix_placeholder_site_in_header-->
   <style type="text/css">
   @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:300, 300i&display=swap');
@@ -1761,12 +1768,13 @@
     letter-spacing: 2px;
     line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
     color: #096B72;
-    font-weight: 200;
-    margin-top: 50px;
+    font-weight: 300;
+    padding-top: 50px;
   }
 
   d-title {
     padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
+    margin-top: 50px;
   }
 
   d-title h1,
@@ -1776,7 +1784,7 @@
 
   d-article div.sourceCode code, 
   d-article pre code {
-  	font-family: "DM Mono", monospace;
+  	font-family: "Work Sans", monospace;
   	font-size: 1rem;
   }
 
@@ -1877,6 +1885,10 @@
     border-top: none !important;
   }
 
+  d-appendix h3 {
+      padding-top: 0px; /*Remove padding-top from blog posts*/
+  }
+
   /* -------------Footer------------------*/
 
   .distill-site-footer {
@@ -1938,9 +1950,16 @@
     content: " ";  /* Remove toc bullets */
   }
 
+  /*----- BLOG PAGE----*/
 
+  .posts-list .post-preview h2 {
+    font-family: "Libre Baskerville";
+    padding-top: 0px;
+  }
 
-
+  .posts-list .post-preview p {
+    font-family: "Work Sans";
+  }
   </style>
   <!--/radix_placeholder_site_in_header-->
 
@@ -1971,9 +1990,6 @@
 <a href="https://github.com/gayoungson/amberwebsite">
 <i class="fab fa-github" aria-hidden="true"></i>
 </a>
-<a href="blog.xml">
-<i class="fa fa-rss" aria-hidden="true"></i>
-</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2000,38 +2016,31 @@
 </nav>
 </div>
 <h2 id="license">License</h2>
-<p>This work is licensed under a <a
-href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
-Attribution-ShareAlike 4.0 International License</a>.</p>
+<p>This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 <center>
 <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i>
 </center>
-<p><em>This is a human-readable summary of (and not a substitute for)
-the license. Please see <a
-href="https://creativecommons.org/licenses/by-sa/4.0/legalcode"
-class="uri">https://creativecommons.org/licenses/by-sa/4.0/legalcode</a>
-for the full legal text.</em></p>
+<p><em>This is a human-readable summary of (and not a substitute for) the license.
+Please see <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" class="uri">https://creativecommons.org/licenses/by-sa/4.0/legalcode</a> for the full legal text.</em></p>
 <p><strong>You are free to:</strong></p>
 <ul>
-<li><p><strong>Share</strong>—copy and redistribute the material in any
-medium or format</p></li>
-<li><p><strong>Remix</strong>—remix, transform, and build upon the
-material for any purpose, even commercially.</p></li>
+<li><p><strong>Share</strong>—copy and redistribute the material in any medium or
+format</p></li>
+<li><p><strong>Remix</strong>—remix, transform, and build upon the material for any
+purpose, even commercially.</p></li>
 </ul>
 <p>The licensor cannot revoke these freedoms as long as you follow the
 license terms.</p>
 <p><strong>Under the following terms:</strong></p>
 <ul>
-<li><p><strong>Attribution</strong>—You must give appropriate credit,
-provide a link to the license, and indicate if changes were made. You
-may do so in any reasonable manner, but not in any way that suggests the
-licensor endorses you or your use.</p></li>
-<li><p><strong>ShareAlike</strong>—If you remix, transform, or build
-upon the material, you must distribute your contributions under the same
-license as the original.</p></li>
-<li><p><strong>No additional restrictions</strong>—You may not apply
-legal terms or technological measures that legally restrict others from
-doing anything the license permits.</p></li>
+<li><p><strong>Attribution</strong>—You must give appropriate credit, provide a link
+to the license, and indicate if changes were made. You may do so in
+any reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.</p></li>
+<li><p><strong>ShareAlike</strong>—If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</p></li>
+<li><p><strong>No additional restrictions</strong>—You may not apply legal terms or
+technological measures that legally restrict others from doing
+anything the license permits.</p></li>
 </ul>
 <p><strong>Notices:</strong></p>
 <p>You do not have to comply with the license for elements of the

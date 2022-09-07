@@ -96,7 +96,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2020-10-19"/>
   <meta property="article:created" itemprop="dateCreated" content="2020-10-19"/>
-  <meta name="article:author" content="Amber"/>
+  <meta name="article:author" content="Amber Gayle Thalmayer"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="What We Could Gain From a More Global Psychology"/>
@@ -113,12 +113,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["What We Could Gain From a More Global Psychology"]},{"type":"character","attributes":{},"value":["Scientific, moral, and professional reasons to increase inclusion in research\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Amber"]}]}]},{"type":"character","attributes":{},"value":["2020-10-19"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["What We Could Gain From a More Global Psychology"]},{"type":"character","attributes":{},"value":["Scientific, moral, and professional reasons to increase inclusion in research\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Amber Gayle Thalmayer"]}]}]},{"type":"character","attributes":{},"value":["2020-10-19"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["welcome_files/anchor-4.2.2/anchor.min.js","welcome_files/bowser-1.9.3/bowser.min.js","welcome_files/distill-2.2.21/template.v2.js","welcome_files/header-attrs-2.14/header-attrs.js","welcome_files/jquery-3.6.0/jquery-3.6.0.js","welcome_files/jquery-3.6.0/jquery-3.6.0.min.js","welcome_files/jquery-3.6.0/jquery-3.6.0.min.map","welcome_files/popper-2.6.0/popper.min.js","welcome_files/tippy-6.2.7/tippy-bundle.umd.min.js","welcome_files/tippy-6.2.7/tippy-light-border.css","welcome_files/tippy-6.2.7/tippy.css","welcome_files/tippy-6.2.7/tippy.umd.min.js","welcome_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["global-pschology_files/anchor-4.2.2/anchor.min.js","global-pschology_files/bowser-1.9.3/bowser.min.js","global-pschology_files/distill-2.2.21/template.v2.js","global-pschology_files/header-attrs-2.16/header-attrs.js","global-pschology_files/jquery-3.6.0/jquery-3.6.0.js","global-pschology_files/jquery-3.6.0/jquery-3.6.0.min.js","global-pschology_files/jquery-3.6.0/jquery-3.6.0.min.map","global-pschology_files/popper-2.6.0/popper.min.js","global-pschology_files/tippy-6.2.7/tippy-bundle.umd.min.js","global-pschology_files/tippy-6.2.7/tippy-light-border.css","global-pschology_files/tippy-6.2.7/tippy.css","global-pschology_files/tippy-6.2.7/tippy.umd.min.js","global-pschology_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -189,6 +189,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1261,15 +1262,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1468,16 +1475,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="welcome_files/header-attrs-2.14/header-attrs.js"></script>
-  <script src="welcome_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <script src="welcome_files/popper-2.6.0/popper.min.js"></script>
-  <link href="welcome_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="welcome_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="welcome_files/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="welcome_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="welcome_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="welcome_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="welcome_files/distill-2.2.21/template.v2.js"></script>
+  <script src="global-pschology_files/header-attrs-2.16/header-attrs.js"></script>
+  <script src="global-pschology_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="global-pschology_files/popper-2.6.0/popper.min.js"></script>
+  <link href="global-pschology_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="global-pschology_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="global-pschology_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="global-pschology_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="global-pschology_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="global-pschology_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="global-pschology_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1489,7 +1496,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"What We Could Gain From a More Global Psychology","description":"Scientific, moral, and professional reasons to increase inclusion in research","authors":[{"author":"Amber","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-10-19T00:00:00.000+02:00","citationText":"Amber, 2020"}
+{"title":"What We Could Gain From a More Global Psychology","description":"Scientific, moral, and professional reasons to increase inclusion in research","authors":[{"author":"Amber Gayle Thalmayer","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-10-19T00:00:00.000+02:00","citationText":"Thalmayer, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1502,131 +1509,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>What We Could Gain From a More Global Psychology</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Scientific, moral, and professional reasons to increase inclusion
-in research</p></p>
+<p><p>Scientific, moral, and professional reasons to increase inclusion in research</p></p>
 </div>
 
 <div class="d-byline">
-  Amber  
+  Amber Gayle Thalmayer  
   
 <br/>2020-10-19
 </div>
 
 <div class="d-article">
-<p>Originally posted October 19, 2020 to Psychology Today People the
-world over have many similarities: We all use metaphors, jokes, and
-insults, we have marriages and kinship rules, and group affiliations.
-Anthropologist Donald Brown compiled an intriguing list of hundreds of
-universal aspects of human societies. But we also know that
-psychological differences across cultures emerge early. Cultural
-upbringing determines things as basic as where your eyes will move when
-you look at a painting, and whether you fall prey to certain optical
-illusions. And even if all societies have marriages, how marriage
-partners are chosen and what we expect from the experience vary
-dramatically.</p>
-<p>The vast majority of psychological research, however, is conducted on
-a small subgroup, the 11 percent of us who live in Western,
-industrialized countries. A recent report by my colleagues and I shows
-that over 90 percent of recent articles in six top psychology journals
-drew on such samples (over 60 percent of American). We know a lot about
-this narrow slice of the human family, but we are neglecting to learn
-about everyone else.</p>
-<p>Studies with White or male samples are less likely to indicate
-participant characteristics in the title, as compared to those with more
-women or ethnic minority samples; such persons may still be treated as
-more “proto-typical” people. This is also true when it comes to the
-nationality of participants. Article titles speak of psychological
-phenomena (e.g. “self-esteem”, “language acquisition”, “personality
-predictors of life outcomes”), without specifying who we are talking
-about. There has been an unstated and convenient assumption that the
-college students near at hand in North America and similar societies can
-stand in for everyone. But this almost certainly isn’t true, and a
-mono-cultural research base deprives us of observations of psychological
-diversity and the new insights that might result.</p>
-<p>International research does exist. Our analysis focused on six
-particularly influential empirical journals, among the most cited in
-psychology, which function to some extent as “gatekeepers” to their
-subdomains. There are also hundreds of peer-reviewed journals specific
-to regions or with the word “international” in their names, whose
-missions are global.</p>
-<p>This research, however, is less likely to reach a broad audience.
-During a visiting scholar stay at the national university of Malaysia
-last winter, I gave a workshop on publishing in international journals.
-Many participants described rejection letters from important journals in
-their areas, which suggested that their studies would be more relevant
-to a local journal and questioned whether a Malaysian study would
-interest an international audience.</p>
-<p>I urged my Malaysian colleagues to point out to editors and reviewers
-that 60 percent of the world’s population lives in Asia, making
-Malaysia’s multi-ethnic Asian society more globally representative than
-the United States. Given the Muslim majority, they could also point to
-the relevance of their work to the 25 percent of the global population
-who identify as Muslim. There is no objective reason to consider a
-Malaysian sample less relevant than a Western one, but old habits (and
-biases) die hard.</p>
-<p>Does this lack of representation in science matter? If you live in
-the United States and don’t plan to work or live abroad, should you
-care? I would argue: yes and yes. As leading cultural psychologist Fons
-van de Vijver wrote, there are moral, professional, and intellectual
-reasons that psychological science should be more international. The
-moral reasons seem to me the most self-evident. Ignoring most of the
-world, while supposing that psychology is a general science, echoes
-imperialist attitudes that modern scientists should make an extra effort
-to avoid.</p>
-<p>Professionally and practically, more representative science means
-better tools and treatments for people all over the world. This includes
-the diverse population in the United States. A lot can go wrong when
-Americans export their ideas about diagnosis and treatment to other
-countries. Ethan Watters’ Crazy Like Us is a hair-raising but great read
-about how this can happen despite good intentions. In Namibia, where
-I’ve been conducting research, mental health needs are significant.
-There is trauma due to a long war for independence and the widespread
-HIV/AIDS epidemic. Training for psychologists and social workers relies
-on American materials and at clinics diagnoses are made with the
-Diagnostic and Statistical Manual of the American Psychiatric
-Association. This can lead to incongruities, which professionals are on
-their own to resolve. For example, a Namibian clinical psychologist told
-me that eye contact with the client was emphasized in her training in
-the United States and South Africa. But among some groups in Namibia,
-direct eye contact is seen as disrespectful and aggressive. While
-diagnoses such as depression and anxiety may have some worldwide
-similarities, the specific ways they will be spoken about and suitable
-ways to treat them can vary in important ways.</p>
-<p>Scientifically and intellectually, we have a lot to gain from better
-representation in our science. One benefit is new ideas. For example,
-Dixon Chibanda and his team in Zimbabwe adapted principles of
-cognitive-behavioral therapy to local needs and resources, in a way that
-maximizes accessibility and reach and minimizes costs. This may be found
-useful in many other settings, including in the United States. Another
-scientific benefit is increased precision and efficiency in science. As
-we understand cultural differences better, we can make better-targeted
-hypotheses about where a phenomenon or treatment is likely to work
-similarly. Understanding group differences can also account for
-unexplained variance in outcomes.</p>
-<p>Finally, more international research can help us define the
-foreground of culturally specific aspects of psychology against the
-background of human universals. Among other things, this teaches us
-about ourselves. If a theory, model, or instrument created in the West
-also works in places with different social conditions and values,
-perhaps we’re on to something universal. In the industrialized West,
-there is a wealth of psychological knowledge, but often we don’t know
-which of these research findings define the human experience and which
-define our particular societies.</p>
-<p>Making psychology more globally inclusive, however, is easier said
-than done. It is complex to translate measures to mean the same thing
-across contexts and to find methods that are analogous but socially and
-practically workable. For example, while it might be most efficient to
-collect survey responses online in the United States and Europe, this
-could lead to biased samples in Africa, among other places, where fewer
-people have computer access. For this reason, it might make the most
-sense for a local interviewer to read survey questions aloud. No single
-study can answer our questions. It takes a multiplicity of creative
-approaches, seeking corroboration across sources, and taking time to get
-the bottom of conflicting findings. In future blog posts, I look forward
-to sharing examples and some of the challenges and joys of working
-towards a more globally inclusive science.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h4 id="originally-posted-october-19-2020-to-psychology-today">Originally posted October 19, 2020 to Psychology Today</h4>
+<p>People the world over have many similarities: We all use metaphors, jokes, and insults, we have marriages and kinship rules, and group affiliations. Anthropologist Donald Brown compiled an intriguing list of hundreds of universal aspects of human societies. But we also know that psychological differences across cultures emerge early. Cultural upbringing determines things as basic as where your eyes will move when you look at a painting, and whether you fall prey to certain optical illusions. And even if all societies have marriages, how marriage partners are chosen and what we expect from the experience vary dramatically.</p>
+<p>The vast majority of psychological research, however, is conducted on a small subgroup, the 11 percent of us who live in Western, industrialized countries. A recent report by my colleagues and I shows that over 90 percent of recent articles in six top psychology journals drew on such samples (over 60 percent of American). We know a lot about this narrow slice of the human family, but we are neglecting to learn about everyone else.</p>
+<p>Studies with White or male samples are less likely to indicate participant characteristics in the title, as compared to those with more women or ethnic minority samples; such persons may still be treated as more “proto-typical” people. This is also true when it comes to the nationality of participants. Article titles speak of psychological phenomena (e.g. “self-esteem”, “language acquisition”, “personality predictors of life outcomes”), without specifying who we are talking about. There has been an unstated and convenient assumption that the college students near at hand in North America and similar societies can stand in for everyone. But this almost certainly isn’t true, and a mono-cultural research base deprives us of observations of psychological diversity and the new insights that might result.</p>
+<p>International research does exist. Our analysis focused on six particularly influential empirical journals, among the most cited in psychology, which function to some extent as “gatekeepers” to their subdomains. There are also hundreds of peer-reviewed journals specific to regions or with the word “international” in their names, whose missions are global.</p>
+<p>This research, however, is less likely to reach a broad audience. During a visiting scholar stay at the national university of Malaysia last winter, I gave a workshop on publishing in international journals. Many participants described rejection letters from important journals in their areas, which suggested that their studies would be more relevant to a local journal and questioned whether a Malaysian study would interest an international audience.</p>
+<p>I urged my Malaysian colleagues to point out to editors and reviewers that 60 percent of the world’s population lives in Asia, making Malaysia’s multi-ethnic Asian society more globally representative than the United States. Given the Muslim majority, they could also point to the relevance of their work to the 25 percent of the global population who identify as Muslim. There is no objective reason to consider a Malaysian sample less relevant than a Western one, but old habits (and biases) die hard.</p>
+<p>Does this lack of representation in science matter? If you live in the United States and don’t plan to work or live abroad, should you care? I would argue: yes and yes. As leading cultural psychologist Fons van de Vijver wrote, there are moral, professional, and intellectual reasons that psychological science should be more international. The moral reasons seem to me the most self-evident. Ignoring most of the world, while supposing that psychology is a general science, echoes imperialist attitudes that modern scientists should make an extra effort to avoid.</p>
+<p>Professionally and practically, more representative science means better tools and treatments for people all over the world. This includes the diverse population in the United States. A lot can go wrong when Americans export their ideas about diagnosis and treatment to other countries. Ethan Watters’ Crazy Like Us is a hair-raising but great read about how this can happen despite good intentions. In Namibia, where I’ve been conducting research, mental health needs are significant. There is trauma due to a long war for independence and the widespread HIV/AIDS epidemic. Training for psychologists and social workers relies on American materials and at clinics diagnoses are made with the Diagnostic and Statistical Manual of the American Psychiatric Association. This can lead to incongruities, which professionals are on their own to resolve. For example, a Namibian clinical psychologist told me that eye contact with the client was emphasized in her training in the United States and South Africa. But among some groups in Namibia, direct eye contact is seen as disrespectful and aggressive. While diagnoses such as depression and anxiety may have some worldwide similarities, the specific ways they will be spoken about and suitable ways to treat them can vary in important ways.</p>
+<p>Scientifically and intellectually, we have a lot to gain from better representation in our science. One benefit is new ideas. For example, Dixon Chibanda and his team in Zimbabwe adapted principles of cognitive-behavioral therapy to local needs and resources, in a way that maximizes accessibility and reach and minimizes costs. This may be found useful in many other settings, including in the United States. Another scientific benefit is increased precision and efficiency in science. As we understand cultural differences better, we can make better-targeted hypotheses about where a phenomenon or treatment is likely to work similarly. Understanding group differences can also account for unexplained variance in outcomes.</p>
+<p>Finally, more international research can help us define the foreground of culturally specific aspects of psychology against the background of human universals. Among other things, this teaches us about ourselves. If a theory, model, or instrument created in the West also works in places with different social conditions and values, perhaps we’re on to something universal. In the industrialized West, there is a wealth of psychological knowledge, but often we don’t know which of these research findings define the human experience and which define our particular societies.</p>
+<p>Making psychology more globally inclusive, however, is easier said than done. It is complex to translate measures to mean the same thing across contexts and to find methods that are analogous but socially and practically workable. For example, while it might be most efficient to collect survey responses online in the United States and Europe, this could lead to biased samples in Africa, among other places, where fewer people have computer access. For this reason, it might make the most sense for a local interviewer to read survey questions aloud. No single study can answer our questions. It takes a multiplicity of creative approaches, seeking corroboration across sources, and taking time to get the bottom of conflicting findings. In future blog posts, I look forward to sharing examples and some of the challenges and joys of working towards a more globally inclusive science.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

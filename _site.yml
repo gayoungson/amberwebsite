@@ -2,14 +2,7 @@ name: "amber-website"
 title: "Amber Gayle Thalmayer"
 description: |
   Test website for Amber
-base_url: https://github.com/gayoungson/amberwebsite/blog.html
-collections:
-  posts:
-    disques: Amber Website
-    share: [twitter, linkedin]
-    citations: false
-    subscribe: _subscribe.html
-    custom: _custom.html
+base_url: https://gayoungson.github.io/amberwebsite
 output_dir: "docs"
 creative_commons: CC BY-SA
 navbar:
@@ -25,9 +18,13 @@ navbar:
       href: team.html
     - icon: fab fa-github
       href: https://github.com/gayoungson/amberwebsite
-    - icon: fa fa-rss
-      href: blog.xml
 output: 
   distill::distill_article:
     toc: true
     css: styles.css
+collections:
+  posts:
+    disqus: amber-website
+    share: [twitter, linkedin]
+    custom: _custom.html
+    citations: false
